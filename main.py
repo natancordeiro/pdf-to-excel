@@ -22,7 +22,6 @@ def processa_pdfs(caminho_pasta:str, plano:str, formato_arquivo: str):
         caminho_pdf = os.path.join(caminho_subpasta, arquivo)
         extrator = ExtratorPDF(caminho_pdf, plano)
         dados = extrator.extrair_dados()
-        logger.debug(f"Dados extraídos: {dados}")
         if dados:
             results.extend(dados)
 
