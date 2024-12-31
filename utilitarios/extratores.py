@@ -15,7 +15,7 @@ class ExtratorPDF:
     def ler_pdf(self):
         """Faz a leitura inicial do PDF."""
         try:
-            logger.info(f"Lendo PDF: {self.caminho_pdf}")
+            logger.debug(f"Lendo PDF: {self.caminho_pdf}")
             reader = PdfReader(self.caminho_pdf)
             texto = ""
             for pagina in reader.pages:
@@ -64,6 +64,7 @@ class ExtratorPDF:
                 "Data de Realização": data
             })
 
+        logger.info(f"{len(results)} procedimentos extraidos.")
         return results
 
     def _extrair_dados_unimed(self):
@@ -114,6 +115,7 @@ class ExtratorPDF:
                 "Data de Atendimento": data_atendimento
             })
 
+        logger.info(f"{len(results)} procedimentos extraidos.")
         return results
 
     def _extrair_dados_rede_unna(self):
@@ -169,6 +171,7 @@ class ExtratorPDF:
                     "Data de Realização": match.group('data')
                 })
 
+        logger.info(f"{len(results)} procedimentos extraidos.")
         return results
 
     def _extrair_dados_samp(self):
@@ -199,6 +202,8 @@ class ExtratorPDF:
                 "Valor": valor,
                 "Data de Atendimento": data
             })
+
+        logger.info(f"{len(results)} procedimentos extraidos.")
         return results
 
     def _extrair_dados_amil(self):
@@ -258,6 +263,7 @@ class ExtratorPDF:
                 "Data de Realização": data_realizacao
             })
 
+        logger.info(f"{len(results)} procedimentos extraidos.")
         return results
     
 if __name__ == "__main__":
