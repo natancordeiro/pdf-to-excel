@@ -1,3 +1,12 @@
+# Projects
+/pdfs/amil/*.pdf
+/pdfs/samp/*.pdf
+/pdfs/unimed/*.pdf
+/pdfs/unna/*.pdf
+/pdfs/odonto_empresas/*.pdf
+*.csv
+*.xlsx
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
