@@ -48,9 +48,23 @@ class ExtratorPDF:
 
     def _extrair_dados_odonto_empresas(self):
         """Extrai dados específicos do plano Odonto Empresas."""
-        print("Extraindo dados do Odonto Empresas...")
-        
-        return {}
+
+        logger.info("Extraindo dados do Odonto Empresas...")
+        conteudo = self.dados.get("conteudo", "")
+        results = []
+
+        pattern = r"(\d{2}/\d{2}/\d{4})\s+(\d{6,8})\s+([\d.,]+)\s+([\d.,]+)\s+([\d.,]+)\s+([\d.,]+)\s+(\d{6,8})"
+        for procedure in re.finditer(pattern, conteudo):
+            data, codigo_procedimento, valor_informado, valor_processado, valor_liberado, valor_glosa, numero_lote = procedure.groups()
+            results.append({
+                "Nome do Beneficiário": "",
+                "Código Procedimento" : codigo_procedimento,
+                "Valor Processado": valor_processado,
+                "Valor Glosa": valor_glosa,
+                "Data de Realização": data
+            })
+
+        return results
 
     def _extrair_dados_unimed(self):
         """Extrai dados específicos do plano Unimed."""
