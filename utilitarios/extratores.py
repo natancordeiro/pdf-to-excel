@@ -57,7 +57,6 @@ class ExtratorPDF:
         for procedure in re.finditer(pattern, conteudo):
             data, codigo_procedimento, valor_informado, valor_processado, valor_liberado, valor_glosa, numero_lote = procedure.groups()
             results.append({
-                "Nome do Beneficiário": "",
                 "Código Procedimento" : codigo_procedimento,
                 "Valor Processado": valor_processado,
                 "Valor Glosa": valor_glosa,
