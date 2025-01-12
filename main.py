@@ -27,7 +27,8 @@ def processa_pdfs(caminho_pasta:str, plano:str, formato_arquivo: str):
 
     # Salvando dados em um arquivo
     if results:
-        salvar_dados(results, plano, formato_arquivo)
+        # salvar_dados(results, plano, formato_arquivo)
+        salvar_dados_planilha(results, plano, 'Relatório Produção Mensal.xlsx')
 
 def main():
     caminho_pasta = './pdfs'
@@ -43,6 +44,8 @@ def main():
     else:
         logger.error("Formato inválido. Tente novamente.")
         return
+
+    criar_planilha_inicial('Relatório Produção Mensal.xlsx')
 
     # Listando subpastas e processando PDFs
     subpastas = listar_subpastas(caminho_pasta)

@@ -105,13 +105,13 @@ class ExtratorPDF:
                 "Nome do Beneficiário": gto_nome,
                 "Código Procedimento": codigo_procedimento,
                 "Nome Procedimento": nome_procedimento,
-                "DT / Área": dt_area,
+                "Dente/Região": dt_area,
                 "Face": face,
                 "Status": status,
                 "Valor Apresentado Conta": valor_apresentado,
-                "Valor Glosado Conta": valor_glosado,
-                "Valor Pago Conta": valor_pago,
-                "Data de Atendimento": data_atendimento
+                "Valor Glosa": valor_glosado,
+                "Valor Processado": valor_pago,
+                "Data de Realização": data_atendimento
             })
 
         logger.info(f"{len(results)} procedimentos extraidos.")
@@ -198,8 +198,9 @@ class ExtratorPDF:
                 "Código Procedimento": codigo_procedimento,
                 "Nome Procedimento": descricao.split('(', -1)[0].strip(),
                 "Face": obter_conteudo_parenteses(descricao),
-                "Valor": valor,
-                "Data de Atendimento": data
+                "Valor Processado": valor,
+                "Valor Glosa": None,
+                "Data de Realização": data
             })
 
         logger.info(f"{len(results)} procedimentos extraidos.")
@@ -258,7 +259,7 @@ class ExtratorPDF:
                 "Dente/Região": dente_regiao,
                 "Face": face,
                 "Valor Processado": valor_processado,
-                "Valor Glosado/Estorno": valor_glosa_estorno,
+                "Valor Glosa": valor_glosa_estorno,
                 "Data de Realização": data_realizacao
             })
 
